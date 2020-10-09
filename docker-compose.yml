@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  github2gitlab:
+    restart: always
+    build: .
+    volumes:
+      - ./cronjobs:/etc/crontabs/root
+      - ./run.sh:/run_cron.sh
+    command: [ "crond", "-f", "-d", "8" ]
+
